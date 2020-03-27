@@ -32,44 +32,84 @@ class MainActivity : AppCompatActivity() {
             performCalculationTxt.append("0")
         }
         oneBtn.setOnClickListener {
-            showResultTxt.append("1")
+            if (showResultTxt.text.toString().equals("0")){
+                showResultTxt.text = "1"
+            }else{
+                showResultTxt.append("1")
+            }
             performCalculationTxt.append("1")
         }
         twoBtn.setOnClickListener {
-            showResultTxt.append("2")
+            if (showResultTxt.text.toString().equals("0")){
+                showResultTxt.text = "2"
+            }else{
+                showResultTxt.append("2")
+            }
             performCalculationTxt.append("2")
         }
         threeBtn.setOnClickListener {
-            showResultTxt.append("3")
+            if (showResultTxt.text.toString().equals("0")){
+                showResultTxt.text = "3"
+            }else{
+                showResultTxt.append("3")
+            }
             performCalculationTxt.append("3")
         }
         fourBtn.setOnClickListener {
-            showResultTxt.append("4")
+            if (showResultTxt.text.toString().equals("0")){
+                showResultTxt.text = "4"
+            }else{
+                showResultTxt.append("4")
+            }
             performCalculationTxt.append("4")
         }
         fiveBtn.setOnClickListener {
-            showResultTxt.append("5")
+            if (showResultTxt.text.toString().equals("0")){
+                showResultTxt.text = "5"
+            }else{
+                showResultTxt.append("5")
+            }
             performCalculationTxt.append("5")
         }
         sixBtn.setOnClickListener {
-            showResultTxt.append("6")
+            if (showResultTxt.text.toString().equals("0")){
+                showResultTxt.text = "6"
+            }else{
+                showResultTxt.append("6")
+            }
             performCalculationTxt.append("6")
         }
         sevenBtn.setOnClickListener {
-            showResultTxt.append("7")
+            if (showResultTxt.text.toString().equals("0")){
+                showResultTxt.text = "7"
+            }else{
+                showResultTxt.append("7")
+            }
             performCalculationTxt.append("7")
         }
         eightBtn.setOnClickListener {
-            showResultTxt.append("8")
+            if (showResultTxt.text.toString().equals("0")){
+                showResultTxt.text = "8"
+            }else{
+                showResultTxt.append("8")
+            }
             performCalculationTxt.append("8")
         }
         nineBtn.setOnClickListener {
-            showResultTxt.append("9")
+            if (showResultTxt.text.toString().equals("0")){
+                showResultTxt.text = "9"
+            }else{
+                showResultTxt.append("9")
+            }
             performCalculationTxt.append("9")
         }
         doubleZeroBtn.setOnClickListener {
-            showResultTxt.append("0")
-            performCalculationTxt.append("0")
+            if (showResultTxt.text.toString().equals("0")){
+                showResultTxt.text = "0"
+            }else{
+                showResultTxt.append("00")
+            }
+            performCalculationTxt.append("00")
         }
         plusBtn.setOnClickListener {
             performCalculationTxt.append("+")
@@ -141,7 +181,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun addOperation(input: String):Int {
+    private fun addOperation(input: String): Int {
         val cArray = input.toCharArray()
         for (i in cArray.indices) {
             when (cArray[i]) {
