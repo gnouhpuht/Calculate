@@ -106,7 +106,7 @@ class MainActivity : AppCompatActivity() {
             var result = 0.0
 
             addOperation(performCalculationTxt.text.toString())
-            addNumber(showResultTxt.text.toString())
+            addNumber(performCalculationTxt.text.toString())
             if (arrOperation.size >= arrNumber.size || arrOperation.size < 1) {
                 showResultTxt.text = "Lỗi định dạng"
             } else {
@@ -136,12 +136,12 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                 }
-                resultBtn.text = decimalFormat.format(result) + ""
+                showResultTxt.text = decimalFormat.format(result) + ""
             }
         }
     }
 
-    private fun addOperation(input: String) {
+    private fun addOperation(input: String):Int {
         val cArray = input.toCharArray()
         for (i in cArray.indices) {
             when (cArray[i]) {
@@ -153,6 +153,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+        return 0
     }
 
     private fun addNumber(input: String) {
