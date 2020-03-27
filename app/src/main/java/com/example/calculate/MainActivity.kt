@@ -1,18 +1,165 @@
 package com.example.calculate
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
+import android.view.KeyEvent.KEYCODE_DEL
+import android.view.inputmethod.BaseInputConnection
+import android.view.KeyEvent
+import java.text.DecimalFormat
+import java.util.regex.Pattern
 
 class MainActivity : AppCompatActivity() {
+    private var arrOperation: ArrayList<String> = ArrayList()
+    private var arrNumber: ArrayList<Double> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        resultBtn.setOnClickListener { showResult() }
+        onclickBtn()
+
     }
 
-    private fun showResult() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    @SuppressLint("SetTextI18n")
+    private fun onclickBtn() {
+        deleteBtn.setOnClickListener {
+            showResultTxt.text = "0"
+            performCalculationTxt.text = ""
+        }
+        zeroBtn.setOnClickListener {
+            showResultTxt.append("0")
+            performCalculationTxt.append("0")
+        }
+        oneBtn.setOnClickListener {
+            showResultTxt.append("1")
+            performCalculationTxt.append("1")
+        }
+        twoBtn.setOnClickListener {
+            showResultTxt.append("2")
+            performCalculationTxt.append("2")
+        }
+        threeBtn.setOnClickListener {
+            showResultTxt.append("3")
+            performCalculationTxt.append("3")
+        }
+        fourBtn.setOnClickListener {
+            showResultTxt.append("4")
+            performCalculationTxt.append("4")
+        }
+        fiveBtn.setOnClickListener {
+            showResultTxt.append("5")
+            performCalculationTxt.append("5")
+        }
+        sixBtn.setOnClickListener {
+            showResultTxt.append("6")
+            performCalculationTxt.append("6")
+        }
+        sevenBtn.setOnClickListener {
+            showResultTxt.append("7")
+            performCalculationTxt.append("7")
+        }
+        eightBtn.setOnClickListener {
+            showResultTxt.append("8")
+            performCalculationTxt.append("8")
+        }
+        nineBtn.setOnClickListener {
+            showResultTxt.append("9")
+            performCalculationTxt.append("9")
+        }
+        doubleZeroBtn.setOnClickListener {
+            showResultTxt.append("0")
+            performCalculationTxt.append("0")
+        }
+        plusBtn.setOnClickListener {
+            performCalculationTxt.append("+")
+            showResultTxt.text = ""
+        }
+        minusBtn.setOnClickListener {
+            performCalculationTxt.append("-")
+            showResultTxt.text = ""
+        }
+        multiplyBtn.setOnClickListener {
+            performCalculationTxt.append("x")
+            showResultTxt.text = ""
+        }
+        divisionBtn.setOnClickListener {
+            performCalculationTxt.append("/")
+            showResultTxt.text = ""
+        }
+        percentBtn.setOnClickListener {
+            performCalculationTxt.append("%")
+            showResultTxt.text = ""
+        }
+
+        clearBtn.setOnClickListener {
+            val textFieldInputConnection = BaseInputConnection(performCalculationTxt, true)
+            textFieldInputConnection.sendKeyEvent(
+                KeyEvent(
+                    KeyEvent.ACTION_DOWN,
+                    KEYCODE_DEL
+                )
+            )
+        }
+        resultBtn.setOnClickListener {
+            val decimalFormat = DecimalFormat("###.#######")
+            var result = 0.0
+
+            addOperation(performCalculationTxt.text.toString())
+            addNumber(showResultTxt.text.toString())
+            if (arrOperation.size >= arrNumber.size || arrOperation.size < 1) {
+                showResultTxt.text = "Lỗi định dạng"
+            } else {
+                for (i in 0 until arrNumber.size - 1) {
+                    when (arrOperation[i]) {
+                        "+" -> if (i == 0) {
+                            result = arrNumber[i] + arrNumber[i + 1]
+                        } else {
+                            result += arrNumber[i + 1]
+                        }
+                        "-" -> if (i == 0) {
+                            result = arrNumber[i] - arrNumber[i + 1]
+                        } else {
+                            result -= arrNumber[i + 1]
+                        }
+                        "x" -> if (i == 0) {
+                            result = arrNumber[i] * arrNumber[i + 1]
+                        } else {
+                            result *= arrNumber[i + 1]
+                        }
+                        "/" -> if (i == 0) {
+                            result = arrNumber[i] / arrNumber[i + 1]
+                        } else {
+                            result /= arrNumber[i + 1]
+                        }
+                        else -> {
+                        }
+                    }
+                }
+                resultBtn.text = decimalFormat.format(result) + ""
+            }
+        }
+    }
+
+    private fun addOperation(input: String) {
+        val cArray = input.toCharArray()
+        for (i in cArray.indices) {
+            when (cArray[i]) {
+                '+' -> arrOperation.add(cArray[i] + "")
+                '-' -> arrOperation.add(cArray[i] + "")
+                'x' -> arrOperation.add(cArray[i] + "")
+                '/' -> arrOperation.add(cArray[i] + "")
+                else -> {
+                }
+            }
+        }
+    }
+
+    private fun addNumber(input: String) {
+        val regex = Pattern.compile("(\\d+(?:\\.\\d+)?)")
+        val matcher = regex.matcher(input)
+        while (matcher.find()) {
+            arrNumber.add(java.lang.Double.valueOf(matcher.group(1)))
+        }
     }
 }
