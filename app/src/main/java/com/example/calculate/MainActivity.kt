@@ -114,27 +114,27 @@ class MainActivity : AppCompatActivity() {
             performCalculationTxt.append("00")
         }
         plusBtn.setOnClickListener {
-            performCalculationTxt.setText(showResultTxt.text)
+            performCalculationTxt.text = showResultTxt.text
             performCalculationTxt.append("+")
             showResultTxt.text = ""
         }
         minusBtn.setOnClickListener {
-            performCalculationTxt.setText(showResultTxt.text)
+            performCalculationTxt.text = showResultTxt.text
             performCalculationTxt.append("-")
             showResultTxt.text = ""
         }
         multiplyBtn.setOnClickListener {
-            performCalculationTxt.setText(showResultTxt.text)
+            performCalculationTxt.text = showResultTxt.text
             performCalculationTxt.append("x")
             showResultTxt.text = ""
         }
         divisionBtn.setOnClickListener {
-            performCalculationTxt.setText(showResultTxt.text)
+            performCalculationTxt.text = showResultTxt.text
             performCalculationTxt.append("/")
             showResultTxt.text = ""
         }
         percentBtn.setOnClickListener {
-            performCalculationTxt.setText(showResultTxt.text)
+            performCalculationTxt.text = showResultTxt.text
             performCalculationTxt.append("%")
             showResultTxt.text = ""
         }
@@ -163,6 +163,7 @@ class MainActivity : AppCompatActivity() {
                             result = arrNumber[i] + arrNumber[i + 1]
                         } else {
                             result += arrNumber[i + 1]
+                            arrOperation.add(arrOperation[i])
                         }
                         "-" -> if (i == 0) {
                             result = arrNumber[i] - arrNumber[i + 1]
@@ -182,6 +183,7 @@ class MainActivity : AppCompatActivity() {
                         else -> {
                         }
                     }
+
                 }
                 showResultTxt.text = decimalFormat.format(result) + ""
             }
