@@ -26,13 +26,15 @@ class MainActivity : AppCompatActivity() {
         deleteBtn.setOnClickListener {
             showResultTxt.text = "0"
             performCalculationTxt.text = ""
+            arrOperation.clear()
+            arrNumber.clear()
         }
         zeroBtn.setOnClickListener {
             showResultTxt.append("0")
             performCalculationTxt.append("0")
         }
         oneBtn.setOnClickListener {
-            if (showResultTxt.text.toString().equals("0")){
+            if (showResultTxt.text.toString() == "0"){
                 showResultTxt.text = "1"
             }else{
                 showResultTxt.append("1")
@@ -40,7 +42,7 @@ class MainActivity : AppCompatActivity() {
             performCalculationTxt.append("1")
         }
         twoBtn.setOnClickListener {
-            if (showResultTxt.text.toString().equals("0")){
+            if (showResultTxt.text.toString() == "0"){
                 showResultTxt.text = "2"
             }else{
                 showResultTxt.append("2")
@@ -48,7 +50,7 @@ class MainActivity : AppCompatActivity() {
             performCalculationTxt.append("2")
         }
         threeBtn.setOnClickListener {
-            if (showResultTxt.text.toString().equals("0")){
+            if (showResultTxt.text.toString() == "0"){
                 showResultTxt.text = "3"
             }else{
                 showResultTxt.append("3")
@@ -56,7 +58,7 @@ class MainActivity : AppCompatActivity() {
             performCalculationTxt.append("3")
         }
         fourBtn.setOnClickListener {
-            if (showResultTxt.text.toString().equals("0")){
+            if (showResultTxt.text.toString() == "0"){
                 showResultTxt.text = "4"
             }else{
                 showResultTxt.append("4")
@@ -64,7 +66,7 @@ class MainActivity : AppCompatActivity() {
             performCalculationTxt.append("4")
         }
         fiveBtn.setOnClickListener {
-            if (showResultTxt.text.toString().equals("0")){
+            if (showResultTxt.text.toString() == "0"){
                 showResultTxt.text = "5"
             }else{
                 showResultTxt.append("5")
@@ -72,7 +74,7 @@ class MainActivity : AppCompatActivity() {
             performCalculationTxt.append("5")
         }
         sixBtn.setOnClickListener {
-            if (showResultTxt.text.toString().equals("0")){
+            if (showResultTxt.text.toString() == "0"){
                 showResultTxt.text = "6"
             }else{
                 showResultTxt.append("6")
@@ -80,7 +82,7 @@ class MainActivity : AppCompatActivity() {
             performCalculationTxt.append("6")
         }
         sevenBtn.setOnClickListener {
-            if (showResultTxt.text.toString().equals("0")){
+            if (showResultTxt.text.toString() == "0"){
                 showResultTxt.text = "7"
             }else{
                 showResultTxt.append("7")
@@ -88,7 +90,7 @@ class MainActivity : AppCompatActivity() {
             performCalculationTxt.append("7")
         }
         eightBtn.setOnClickListener {
-            if (showResultTxt.text.toString().equals("0")){
+            if (showResultTxt.text.toString() == "0"){
                 showResultTxt.text = "8"
             }else{
                 showResultTxt.append("8")
@@ -96,7 +98,7 @@ class MainActivity : AppCompatActivity() {
             performCalculationTxt.append("8")
         }
         nineBtn.setOnClickListener {
-            if (showResultTxt.text.toString().equals("0")){
+            if (showResultTxt.text.toString() == "0"){
                 showResultTxt.text = "9"
             }else{
                 showResultTxt.append("9")
@@ -104,7 +106,7 @@ class MainActivity : AppCompatActivity() {
             performCalculationTxt.append("9")
         }
         doubleZeroBtn.setOnClickListener {
-            if (showResultTxt.text.toString().equals("0")){
+            if (showResultTxt.text.toString() == "0"){
                 showResultTxt.text = "0"
             }else{
                 showResultTxt.append("00")
@@ -112,22 +114,27 @@ class MainActivity : AppCompatActivity() {
             performCalculationTxt.append("00")
         }
         plusBtn.setOnClickListener {
+            performCalculationTxt.setText(showResultTxt.text)
             performCalculationTxt.append("+")
             showResultTxt.text = ""
         }
         minusBtn.setOnClickListener {
+            performCalculationTxt.setText(showResultTxt.text)
             performCalculationTxt.append("-")
             showResultTxt.text = ""
         }
         multiplyBtn.setOnClickListener {
+            performCalculationTxt.setText(showResultTxt.text)
             performCalculationTxt.append("x")
             showResultTxt.text = ""
         }
         divisionBtn.setOnClickListener {
+            performCalculationTxt.setText(showResultTxt.text)
             performCalculationTxt.append("/")
             showResultTxt.text = ""
         }
         percentBtn.setOnClickListener {
+            performCalculationTxt.setText(showResultTxt.text)
             performCalculationTxt.append("%")
             showResultTxt.text = ""
         }
